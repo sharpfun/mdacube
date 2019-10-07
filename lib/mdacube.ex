@@ -157,6 +157,7 @@ defimpl Enumerable, for: MDACube do
         MapSet.union(acc, [coordinates |> Map.keys |> Enum.sort] |> MapSet.new)
       end)
       |> MapSet.to_list
+      |> Enum.sort_by(&(length(&1)), &>=/2)
       %{label: label, subsets: subsets, facts: facts}
     end)
   end
